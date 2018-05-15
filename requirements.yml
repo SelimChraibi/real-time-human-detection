@@ -1,0 +1,56 @@
+name: ml-env
+channels:
+  - defaults
+dependencies:
+  - absl-py=0.2.0=py35_0
+  - astor=0.6.2=py35_0
+  - bleach=1.5.0=py35_0
+  - ca-certificates=2018.03.07=0
+  - certifi=2018.4.16=py35_0
+  - cudatoolkit=9.0=h13b8566_0
+  - cudnn=7.1.2=cuda9.0_0
+  - cupti=9.0.176=0
+  - gast=0.2.0=py35_0
+  - grpcio=1.11.0=py35hf484d3e_0
+  - h5py=2.7.1=py35h8d53cdc_0
+  - hdf5=1.10.1=h9caa474_1
+  - html5lib=0.9999999=py35_0
+  - intel-openmp=2018.0.0=8
+  - keras-gpu=2.1.5=py35_0
+  - libedit=3.1.20170329=h6b74fdf_2
+  - libffi=3.2.1=hd88cf55_4
+  - libgcc-ng=7.2.0=hdf63c60_3
+  - libgfortran-ng=7.2.0=hdf63c60_3
+  - libprotobuf=3.5.2=h6f1eeef_0
+  - libstdcxx-ng=7.2.0=hdf63c60_3
+  - markdown=2.6.11=py35_0
+  - mkl=2018.0.2=1
+  - mkl_fft=1.0.1=py35h3010b51_0
+  - mkl_random=1.0.1=py35h629b387_0
+  - ncurses=6.1=hf484d3e_0
+  - numpy=1.14.2=py35hdbf6ddf_1
+  - openssl=1.0.2o=h20670df_0
+  - pip=10.0.1=py35_0
+  - protobuf=3.5.2=py35hf484d3e_0
+  - python=3.5.5=hc3d631a_4
+  - pyyaml=3.12=py35h46ef4ae_1
+  - readline=7.0=ha6073c6_4
+  - scipy=1.1.0=py35hfc37229_0
+  - setuptools=39.1.0=py35_0
+  - six=1.11.0=py35h423b573_1
+  - sqlite=3.23.1=he433501_0
+  - tensorboard=1.7.0=py35hf484d3e_1
+  - tensorflow-gpu=1.7.0=0
+  - tensorflow-gpu-base=1.7.0=py35hcdda91b_1
+  - termcolor=1.1.0=py35_1
+  - tk=8.6.7=hc745277_3
+  - werkzeug=0.14.1=py35_0
+  - wheel=0.31.0=py35_0
+  - xz=5.2.3=h5e939de_4
+  - yaml=0.1.7=had09818_2
+  - zlib=1.2.11=ha838bed_2
+  - pip:
+    - keras==2.1.5
+    - tensorflow==1.7.0
+prefix: /home/selimsepthuit/anaconda3/envs/ml-env
+

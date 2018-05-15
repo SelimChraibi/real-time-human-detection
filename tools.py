@@ -21,7 +21,7 @@ def load_dataset(path):
     
     files   = np.array(data['filenames'])
     targets = np_utils.to_categorical(np.array(data['target']), nb_classes)
-    classes = [item[len(path):-1] for item in sorted(glob(path + "/*"))]
+    classes = [item[len(path):] for item in sorted(glob(path + "/*"))]
     
     return files, targets, classes
 
@@ -32,9 +32,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-def display_examples(files, number=25):
+def show_examples(files, number=25):
     """
-    Displays 'number' images selected randomly from 'files'
+    Shows 'number' images selected randomly from 'files'
     """
     width  = 5
     height = number//5
@@ -50,9 +50,9 @@ def display_examples(files, number=25):
 
 import cv2
 
-def display(img_path):
+def show(img_path):
     """
-    Displays the image located at 'img_path'
+    Shows the image located at 'img_path'
     """
     img = cv2.imread(img_path)
     cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -87,10 +87,43 @@ def paths_to_tensor(img_paths):
     return np.vstack(list_of_tensors).astype('float32')/255
 
 # ┌──────────────────────────────────────────────────────┐
+# │                  Training the model                  │ 
+# └──────────────────────────────────────────────────────┘
+
+import tensorflow as tf
+from keras.callbacks import ModelCheckpoint  
+import os
+
+    
+def train(model, model_name, train_tensors, train_targets, epochs=5, batch_size=35, verbose=1):
+    """
+    Trains the model and saves it under 'saved_models/<model_name>.hdf5'
+    returns the 'history' of the learning process (used to plot the learning curves)
+    """
+    
+    if not os.path.exists('saved_models/'):
+        os.makedirs('saved_models/')
+    
+    checkpointer = ModelCheckpoint(filepath='saved_models/' + model_name +'.hdf5', 
+                               verbose=1, 
+                               save_best_only=True,
+                               save_weights_only=False)
+
+    history = model.fit(train_tensors, train_targets, 
+                        validation_split=0.2,
+                        epochs=epochs, 
+                        batch_size=batch_size,
+                        callbacks=[checkpointer], 
+                        verbose=verbose)
+    return history
+
+# ┌──────────────────────────────────────────────────────┐
 # │             Analysing the trained model              │ 
 # └──────────────────────────────────────────────────────┘
 
 import matplotlib.pyplot as plt  
+import seaborn as sns
+import numpy as np
 
 def learning_curves(history, filename):
     """
@@ -98,27 +131,31 @@ def learning_curves(history, filename):
     This method plots the learning_curves saved in 'history' and saves the plots in ./'filename'.
     """
     
-    plt.figure(figsize=(16, 8))
-    
-    # Plot accuracy
-    plt.subplot(1,2,1)
-    plt.plot(history.history['acc'])
-    plt.plot(history.history['val_acc'])
-    plt.title('Model Accuracy')
-    plt.ylabel('accuracy')
-    plt.xlabel('epoch')
-    plt.legend(['training', 'validation'], loc='upper left')
-    
-    # Plot loss
-    plt.subplot(1,2,2)
-    plt.plot(history.history['loss'])
-    plt.plot(history.history['val_loss'])
-    plt.title('Model Loss')
-    plt.ylabel('loss')
-    plt.xlabel('epoch')
-    plt.legend(['training', 'validation'], loc='upper left')
-    plt.savefig(filename)
-    plt.show()
+    with plt.style.context('seaborn-darkgrid'):
+        
+        plt.figure(figsize=(16, 5))
+
+        # Plot accuracy
+        plt.subplot(1,2,1)
+        plt.plot(history.history['acc'])
+        plt.plot(history.history['val_acc'])
+        plt.title('Model Accuracy')
+        plt.ylabel('accuracy')
+        plt.xlabel('epoch')
+        plt.legend(['training', 'validation'], loc='upper left')
+
+        # Plot loss
+        plt.subplot(1,2,2)
+        plt.plot(history.history['loss'])
+        plt.plot(history.history['val_loss'])
+        plt.title('Model Loss')
+        plt.ylabel('loss')
+        plt.xlabel('epoch')
+        plt.legend(['training', 'validation'], loc='upper left')
+        plt.savefig(filename)
+        
+        plt.suptitle('filename')
+        plt.show()
 
 #--------------------------------------------------------
 
@@ -224,5 +261,3 @@ def quick_test(model, test_data, nb_images, name_of_final_conv_layer, name_of_de
         else:
             print('not human')
             class_activation_map(model, img_path, name_of_final_conv_layer, name_of_dense_layer, class_number=1) 
-
-            
