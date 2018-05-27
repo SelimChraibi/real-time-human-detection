@@ -62,21 +62,7 @@ def rm_unused_folders(source):
                 os.remove(folder)
             else:
                 shutil.rmtree(folder)
-                
-#     for file in source + 'Train/neg/':
-#         file = source + 'Train/neg/' + file
-#         if np.random.rand(1) < 0.5:
-#             os.remove(file)
-    
-#     for file in source + 'Valid/neg/':
-#         file = source + 'Train/neg/' + file
-#         if np.random.rand(1) < 0.5:
-#             os.remove(file)
-    
-#     for file in source + 'Test/neg/':
-#         file = source + 'Train/neg/' + file
-#         if np.random.rand(1) < 0.4:
-#             os.remove(file)
+               
 
 #--------------------------------------------------------
 
@@ -196,7 +182,7 @@ def show(img_path):
 from keras.preprocessing import image
 from tqdm import tqdm
 
-def path_to_tensor(img_path):
+def img_path_to_tensor(img_path):
     """
     Takes a string-valued file path to a color image (3 channels) as input
     and returns a 4D tensor of shape (1, 224, 224, 3) suitable for supplying to a Keras CNN
@@ -215,7 +201,7 @@ def paths_to_tensor(img_paths):
     """
     list_of_tensors = []
     for img_path in tqdm(img_paths):
-        list_of_tensors += [path_to_tensor(img_path)]
+        list_of_tensors += [img_path_to_tensor(img_path)]
     return np.vstack(list_of_tensors)
 
 #--------------------------------------------------------
@@ -397,7 +383,7 @@ def predict(model, img_path):
     Return the predicted class.
     """
     # preprocess image into resized tensor
-    tensor = path_to_tensor(img_path)
+    tensor = img_path_to_tensor(img_path)
     
     return np.argmax(model.predict(tensor))        
 
@@ -415,13 +401,54 @@ def get_layer(model, layer_name):
     layer = layer_dict[layer_name]
     return layer
 
+def cam(model, img, name_of_final_conv_layer, name_of_dense_layer, class_number):
+    resized_img = cv2.resize(img, (224, 224)) 
+    # convert 3D tensor (cv2 imgage of 3 channels) into 4D tensor with shape (1, 224, 224, 3)
+    tensor = np.expand_dims(resized_img, axis=0).astype('float32')/255
+    # Get the input weights to the dense layer.
+    class_weights = get_layer(model, name_of_dense_layer).get_weights()[0]
+    
+    # We retrieve the final conv layer
+    final_conv_layer = get_layer(model, name_of_final_conv_layer)
+    
+    # This function outputs the output of the final conv layer given the tensor input of the 1st layer
+    get_output = K.function([model.layers[0].input], [final_conv_layer.output])
+    
+    [conv_outputs] = get_output([tensor])
+    conv_outputs = conv_outputs[0, :, :, :]
+
+    # Original input image to which we will add the cam
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    width, height, _ = img.shape
+    
+    # ---------------- Creation of the class activation map ----------------
+
+    # Initialize with the right shape
+    cam = np.zeros(dtype = np.float32, shape = conv_outputs.shape[0:2])
+
+    # Weighted sum of the cam = \Sum_i (cam_i * weight_i)
+    for i, w in enumerate(class_weights[:, class_number]):
+            cam += w * conv_outputs[:, :, i]
+
+    # We normalise and resize the cam
+    cam /= np.max(cam)
+    cam = cv2.resize(cam, (height, width))
+    
+    # We transform it into a heatmap
+    heatmap = cv2.applyColorMap(np.uint8(255*cam), cv2.COLORMAP_JET)
+    heatmap[np.where(cam < 0.2)] = 0
+
+    # And add it to the original input image
+    img = cv2.addWeighted(heatmap, 0.5, img, 0.5, 0)
+  
+    return img
 
 def class_activation_map(model, img_path, name_of_final_conv_layer, name_of_dense_layer, class_number):
     """
     Displays the class activation map of the classes 'class_number' for the given model and image.
     name_of_dense_layer and name_of_final_conv_layer can be found by calling `model.summary()`
     """
-    tensor = path_to_tensor(img_path)
+    tensor = img_path_to_tensor(img_path)
 
     # Get the input weights to the dense layer.
     class_weights = get_layer(model, name_of_dense_layer).get_weights()[0]
@@ -506,7 +533,6 @@ def quick_test(model, model_name, test_files, test_targets, nb_images, name_of_f
         for c, category in enumerate(categories):
             ax      = fig.add_subplot(height, width, c+1, xticks=[], yticks=[], title=category + ' cam')
             image   = class_activation_map(model, img_path, name_of_final_conv_layer, name_of_dense_layer, c)
-#             image   = cam(model, img_path)
             highlight_ax(ax, category == prediction)
             ax.imshow(image)
         
