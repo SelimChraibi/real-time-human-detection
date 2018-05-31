@@ -113,27 +113,26 @@ class AbstractDataset():
         if not folder[-1] == '/': folder += '/'
 
         nb_classes = len(glob(folder + "*"))
-
-        files = np.array(data['filenames'])
-        tensors = imagePaths2tensor(files)
-
-        targets = np_utils.to_categorical(np.array(data['target']), nb_classes)
         self.classes = [item[len(folder):] for item in sorted(glob(folder + "*"))]
-
-        # # Balancing the data so that there is roughly as many images in 'neg' as in 'pos' 
-        # new_files = []
-        # new_targets = []
-        # for file, target in zip(files, targets):
-        #     target = list(target)
-        #     if target[1] == 1:
-        #         new_files.append(file)
-        #         new_targets.append(target)
-        #     elif np.random.rand(1) < 0.5:
-        #         new_files.append(file)
-        #         new_targets.append(target)
-        # targets = np.array(new_targets)
-        # files   = np.array(new_files)
-
+        
+        files = np.array(data['filenames'])
+        targets = np_utils.to_categorical(np.array(data['target']), nb_classes)
+        
+        # Balancing the data so that there is roughly as many images in 'neg' as in 'pos' 
+        new_files = []
+        new_targets = []
+        for file, target in zip(files, targets):
+            target = list(target)
+            if target[1] == 1:
+                new_files.append(file)
+                new_targets.append(target)
+            elif np.random.rand(1) < 0.5:
+                new_files.append(file)
+                new_targets.append(target)
+        targets = np.array(new_targets)
+        files   = np.array(new_files)
+        
+        tensors = imagePaths2tensor(files)      
         return tensors, targets
 
 def image2tensor(img):

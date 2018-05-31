@@ -37,10 +37,10 @@ class Classifier():
                                   write_images        = True)
     _early_stopping_settings = dict(monitor           = 'val_loss', 
                                   patience            = 5)
-    _datagen_settings        = dict(width_shift_range = 0.3,
-                                  height_shift_range  = 0.3,
-                                  shear_range         = 0.3,
-                                  zoom_range          = 0.3,
+    _datagen_settings        = dict(width_shift_range = 0.2,
+                                  height_shift_range  = 0.2,
+                                  shear_range         = 0.2,
+                                  zoom_range          = 0.2,
                                   horizontal_flip     = True,
                                   fill_mode           = "wrap")
     

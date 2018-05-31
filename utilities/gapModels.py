@@ -1,6 +1,6 @@
 from keras.applications import mobilenet
 from keras.models import load_model, Sequential, Model
-from keras.layers import Dense
+from keras.layers import Dense, GlobalMaxPooling2D
 from keras.regularizers import l2
 # from keras.optimizers import SGD 
 
@@ -51,7 +51,7 @@ class AbstractModelGAP():
         """
         self.model = load_model(path)
     
-    # Delegation (this allows the classe's object to be used as keras models)
+    # Delegation (this allows the class' object to be used as keras models)
     def __getattr__(self, attr):
         return getattr(self.model, attr)
     
