@@ -307,12 +307,17 @@ class GoogleImageScrapedDataset(AbstractDataset):
     This class uses a library made by hardikvasa (see https://github.com/hardikvasa/google-images-download).
     """
     
+    download_settings = {"safe_search"      : True,
+                         "size"             : "medium",
+                         "format"           : "png"}
+    
     def __init__(self, source, validation_split=0.2):
-        self.source = addSlash(source)
-        #response = google_images_download.googleimagesdownload()
-        #self.download = response.download()
+        self.source   = addSlash(source)
+        self.download_settings["output_directory"] = self.source
+        response      = google_images_download.googleimagesdownload()
+        self.download = response.download
 
-    def fillClass(self, class_name, sample_size, keywords, valid=0.2, test=0.2):
+    def fillClass(self, class_name, sample_size, keyword, valid=0.2, test=0.2):
         """
         Downloads sample_size images and splits them into train/valid/test images.
         Uses the folowing hierarchy:
@@ -329,27 +334,20 @@ class GoogleImageScrapedDataset(AbstractDataset):
         
         mkdir(self.source)
         class_name = addSlash(class_name)
-
-        response = google_images_download.googleimagesdownload()
-        arguments = {"keywords"         : ",".join(keywords),
-                     "limit"            : sample_size, 
-                     "safe_search"      : True,
-                     "output_directory" : self.source, 
-                     "image_directory"  : "Train/" + class_name,
-                     "size"             : "medium",
-                     "format"           : "png",
-                     "chromedriver"     : "/home/selimsepthuit/human-localisation/utilities/"}
-        absolute_image_paths = response.download(arguments)
-        
         mkdir(self.source + "Valid/")
-        mkdir(self.source + "Test/")
+        mkdir(self.source + "Test/" )
         mkdir(self.source + "Valid/" + class_name)
-        mkdir(self.source + "Test/" + class_name)
+        mkdir(self.source + "Test/"  + class_name)
+
+        self.download_settings["keywords"]         = keyword
+        self.download_settings["limit"]            = sample_size
+        self.download_settings["image_directory"]  = "Train/" + class_name
+        
+        absolute_image_paths = self.download(self.download_settings)
         
         files = list(absolute_image_paths.values())[0]
         for file in files:
-            if file[-3:] != 'png':
-                remove(file)
+            if file[-3:] != 'png': remove(file)
             else:
                 r = np.random.rand(1)
                 if r < valid:
