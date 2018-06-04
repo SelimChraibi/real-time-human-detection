@@ -10,6 +10,7 @@ import os
 import shutil
 from glob import glob
 import math
+from google_images_download import google_images_download # https://github.com/hardikvasa/google-images-download
 
 
 class AbstractDataset():
@@ -40,8 +41,7 @@ class AbstractDataset():
     classes = []
     
     def __init__(self, source):
-        self.source = source
-        if not self.source[-1] == '/': self.source += '/'
+        self.source = addSlash(source)
         self.X_train, self.y_train = self._loadFolder(self.source + "Train")
         self.X_test, self.y_test   = self._loadFolder(self.source + "Test")
         self.X_valid, self.y_valid = self._loadFolder(self.source + "Valid")
@@ -110,27 +110,13 @@ class AbstractDataset():
         data = load_files(folder)
         data['target'] -= min(data['target'])
         
-        if not folder[-1] == '/': folder += '/'
-
+        folder = addSlash(folder)
+        
         nb_classes = len(glob(folder + "*"))
         self.classes = [item[len(folder):] for item in sorted(glob(folder + "*"))]
         
         files = np.array(data['filenames'])
         targets = np_utils.to_categorical(np.array(data['target']), nb_classes)
-        
-        # Balancing the data so that there is roughly as many images in 'neg' as in 'pos' 
-        new_files = []
-        new_targets = []
-        for file, target in zip(files, targets):
-            target = list(target)
-            if target[1] == 1:
-                new_files.append(file)
-                new_targets.append(target)
-            elif np.random.rand(1) < 0.5:
-                new_files.append(file)
-                new_targets.append(target)
-        targets = np.array(new_targets)
-        files   = np.array(new_files)
         
         tensors = imagePaths2tensor(files)      
         return tensors, targets
@@ -177,7 +163,29 @@ def imagePaths2tensor(img_paths):
         list_of_tensors += [imagePath2tensor(img_path)]
     return np.vstack(list_of_tensors)
 
+def mkdir(path):
+    """
+    Creates a directory if it doesn't already exist
+    """
+    if not os.path.exists(path):
+        os.makedirs(path)
 
+def addSlash(path):
+    """
+    Add a slash at the end of a path name if it isn't there already
+    """
+    if not path[-1] == '/': path += '/'
+    return path
+
+def remove(path):
+    """
+    Removes folder or file
+    """
+    if os.path.isfile(path):
+        os.remove(path)
+    else:
+        shutil.rmtree(path)
+    
 
 class InriaPersonDataset(AbstractDataset):
     """
@@ -188,10 +196,48 @@ class InriaPersonDataset(AbstractDataset):
     """
     
     def __init__(self, source, validation_split=0.2):
-        if not source[-1] == '/': source += '/'
+        source = addSlash(source)
         self._removeUnusedFolders(source)
         self._createValidationDataFolder(source, validation_split)
         super().__init__(source)
+        
+    def _loadFolder(self, folder):
+        """
+        Loads the files in the given folder into a tensor.
+        
+        Args:
+            folder (string): Path to an folder
+        Returns:
+            numpy.ndarray  : 4D tensor of shape (samples_size, 224, 224, 3) containing the loded images
+            numpy.ndarray  : array containing the coresponding target labels (one-hot encoded)
+        """
+        data = load_files(folder)
+        data['target'] -= min(data['target'])
+        
+        folder = addSlash(folder)
+        
+        nb_classes = len(glob(folder + "*"))
+        self.classes = [item[len(folder):] for item in sorted(glob(folder + "*"))]
+        
+        files = np.array(data['filenames'])
+        targets = np_utils.to_categorical(np.array(data['target']), nb_classes)
+        
+        # Balancing the data so that there is roughly as many images in 'neg' as in 'pos' 
+        new_files = []
+        new_targets = []
+        for file, target in zip(files, targets):
+            target = list(target)
+            if target[1] == 1:
+                new_files.append(file)
+                new_targets.append(target)
+            elif np.random.rand(1) < 0.5:
+                new_files.append(file)
+                new_targets.append(target)
+        targets = np.array(new_targets)
+        files   = np.array(new_files)
+        
+        tensors = imagePaths2tensor(files)      
+        return tensors, targets
         
     def _removeUnusedFolders(self, source):
         """
@@ -201,26 +247,17 @@ class InriaPersonDataset(AbstractDataset):
         for folder in os.listdir(source):
             if folder != 'Test' and folder != 'Train' and folder != 'Valid':
                 folder = self.source + folder
-                if os.path.isfile(folder):
-                    os.remove(folder)
-                else:
-                    shutil.rmtree(folder)
+                remove(folder)
 
         for folder in os.listdir(source + 'Train/'):
             if folder != 'neg' and folder != 'pos':
                 folder = self.source + 'Train/' + folder
-                if os.path.isfile(folder):
-                    os.remove(folder)
-                else:
-                    shutil.rmtree(folder)
+                remove(folder)
 
         for folder in os.listdir(source + 'Test/'):
             if folder != 'neg' and folder != 'pos':
                 folder = self.source + 'Test/' + folder
-                if os.path.isfile(folder):
-                    os.remove(folder)
-                else:
-                    shutil.rmtree(folder)
+                remove(folder)
                     
     def _createValidationDataFolder(self, source, validation_split=0.2):
         """
@@ -251,4 +288,85 @@ class InriaPersonDataset(AbstractDataset):
                     if np.random.rand(1) < validation_split:
                         shutil.move(train + category + file, valid + category + file)
 
-       
+class GoogleImageScrapedDataset(AbstractDataset):
+    """
+    Creates and loads a database using images scraped from Google image.
+    This class uses a library made by hardikvasa (see https://github.com/hardikvasa/google-images-download).
+    """
+    
+    def __init__(self, source, validation_split=0.2):
+        self.source = addSlash(source)
+        #response = google_images_download.googleimagesdownload()
+        #self.download = response.download()
+
+    def fillClass(self, class_name, sample_size, keywords, valid=0.2, test=0.2):
+        """
+        Downloads sample_size images and splits them into train/valid/test images.
+        Uses the folowing hierarchy:
+
+            self.source/
+                ├── Train/
+                │   └── class_name/
+                ├── Valid/
+                │   └── class_name/
+                ├── Test/
+                └── └── class_name/
+    
+        """
+        
+        mkdir(self.source)
+        class_name = addSlash(class_name)
+
+        response = google_images_download.googleimagesdownload()
+        arguments = {"keywords"         : ",".join(keywords),
+                     "limit"            : sample_size, 
+                     "safe_search"      : True,
+                     "output_directory" : self.source, 
+                     "image_directory"  : "Train/" + class_name,
+                     "size"             : "medium",
+                     "format"           : "png"}
+        absolute_image_paths = response.download(arguments)
+        
+        mkdir(self.source + "Valid/")
+        mkdir(self.source + "Test/")
+        mkdir(self.source + "Valid/" + class_name)
+        mkdir(self.source + "Test/" + class_name)
+        
+        files = os.listdir(self.source + "Train/" + class_name)
+        for file in files:
+            if file[-3:] != 'png':
+                remove(self.source + "Train/" + class_name + file)
+            else:
+                r = np.random.rand(1)
+                if r < valid:
+                    shutil.move(self.source + "Train/" + class_name + file, 
+                                self.source + "Valid/" + class_name + file)
+                elif r < valid+test:
+                    shutil.move(self.source + "Train/" + class_name + file, 
+                                self.source + "Test/"  + class_name + file)
+            
+    def load(self):
+        """
+        Loads all the images into tensors and loads their targets.
+        """
+        self.X_train, self.y_train = self._loadFolder(self.source + "Train")
+        self.X_test, self.y_test   = self._loadFolder(self.source + "Test")
+        self.X_valid, self.y_valid = self._loadFolder(self.source + "Valid")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
