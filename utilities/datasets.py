@@ -95,7 +95,17 @@ class AbstractDataset():
         stat_tab = np.hstack([[['Train'], ['Valid'], ['Test'], ['']], stat_tab])
 
         return pd.DataFrame(stat_tab, columns=["Classes"]+self.classes+["Total"]).set_index('Classes')
-
+    
+    def merge(self, other):
+        """
+        Merge another dataset with the current one.
+        """
+        self.X_train = np.vstack([self.X_train, other.X_train])
+        self.y_train = np.vstack([self.y_train, other.y_train]) 
+        self.X_test  = np.vstack([self.X_test , other.X_test ])
+        self.y_test  = np.vstack([self.y_test , other.y_test ]) 
+        self.X_valid = np.vstack([self.X_valid, other.X_valid])
+        self.y_valid = np.vstack([self.y_valid, other.y_valid]) 
 
     def _loadFolder(self, folder):
         """
@@ -160,7 +170,10 @@ def imagePaths2tensor(img_paths):
     """
     list_of_tensors = []
     for img_path in tqdm(img_paths):
-        list_of_tensors += [imagePath2tensor(img_path)]
+        try:
+            list_of_tensors += [imagePath2tensor(img_path)]
+        except:
+            list_of_tensors += [list_of_tensors[-1]]
     return np.vstack(list_of_tensors)
 
 def mkdir(path):
@@ -324,7 +337,8 @@ class GoogleImageScrapedDataset(AbstractDataset):
                      "output_directory" : self.source, 
                      "image_directory"  : "Train/" + class_name,
                      "size"             : "medium",
-                     "format"           : "png"}
+                     "format"           : "png",
+                     "chromedriver"     : "/home/selimsepthuit/human-localisation/utilities/"}
         absolute_image_paths = response.download(arguments)
         
         mkdir(self.source + "Valid/")
@@ -332,18 +346,16 @@ class GoogleImageScrapedDataset(AbstractDataset):
         mkdir(self.source + "Valid/" + class_name)
         mkdir(self.source + "Test/" + class_name)
         
-        files = os.listdir(self.source + "Train/" + class_name)
+        files = list(absolute_image_paths.values())[0]
         for file in files:
             if file[-3:] != 'png':
-                remove(self.source + "Train/" + class_name + file)
+                remove(file)
             else:
                 r = np.random.rand(1)
                 if r < valid:
-                    shutil.move(self.source + "Train/" + class_name + file, 
-                                self.source + "Valid/" + class_name + file)
+                    shutil.move(file, self.source + "Valid/" + class_name + file.split("/")[-1])
                 elif r < valid+test:
-                    shutil.move(self.source + "Train/" + class_name + file, 
-                                self.source + "Test/"  + class_name + file)
+                    shutil.move(file, self.source + "Test/"  + class_name + file.split("/")[-1])
             
     def load(self):
         """
