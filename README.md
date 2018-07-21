@@ -26,7 +26,7 @@ The aim of this project is to create an algorithm capable of detecting the prese
 
 ### Metrics
 
-The algorithm will be evaluated according to metrics:
+The algorithm will be evaluated according to the following metrics:
 - The accuracy of the detections
 - The computation time of a detection
 
