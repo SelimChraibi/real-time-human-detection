@@ -1,4 +1,4 @@
-# Live Person localisation
+# Live Person Detection
 
 
 ![Image Copied on 2018-07-21 at 22.23 PM](https://i.imgur.com/9JvJ5v6.jpg)
