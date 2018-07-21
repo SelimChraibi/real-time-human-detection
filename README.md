@@ -8,9 +8,9 @@ python3 webcam_cam.py --model ./saved_model/mobilenet.h5
 ```
 
 >**Requires:**
->Tensorflow version 	>= 1.7
-Keras version 		>= 2.1 
-OpenCV version 		>= 3.3
+>Tensorflow version     >= 1.7
+Keras version         >= 2.1
+OpenCV version         >= 3.3
 
 
 
@@ -18,7 +18,7 @@ OpenCV version 		>= 3.3
 
 ### Project Overview
 
-The capability to automatically detect the presence of humans in a video has multiple applications: surveillance cameras, human-machine interaction, pedestrian detection, automatic focus in digital cameras, video compression in videoconference softwares where the quality of the image can be reduced outside the bounding boxes etc.
+The capability to automatically detect the presence of humans in a video has multiple applications: surveillance cameras, human-machine interaction, pedestrian detection, automatic focus in digital cameras, video compression in videoconference software where the quality of the image can be reduced outside the bounding boxes etc.
 
 ### Problem Statement
 
@@ -26,7 +26,7 @@ The aim of this project is to create an algorithm capable of detecting the prese
 
 ### Metrics
 
-The algorithm will be evaluated according to to metrics:
+The algorithm will be evaluated according to metrics:
 - The accuracy of the detections
 - The computation time of a detection
 
@@ -38,13 +38,13 @@ The algorithm will be evaluated according to to metrics:
 The data used to train the classifier comes from the [INRIA person dataset](http://pascal.inrialpes.fr/data/human/).
 
 This dataset contains images with persons (positive) and without persons (negative).
-Originally, this dataset is unbalanced: there are 1669 negatives and 900 positives which means that a classifier can reach an accuracy of 70% by always predicting negatives. We therefore do not load the excess of negatives.
+Originally, this dataset is unbalanced: there are 1669 negatives and 900 positives which means that a classifier can reach an accuracy of 70% by always predicting negatives. The excess of negatives is therefore not loaded.
 
 ### Visualization
 
 ![Unknown](https://i.imgur.com/9Xy0M1U.png)
 
-Most of the photos in this dataset are outdoors urban photos and the photos containing people are never close ups. We can already expect a model trained on this dataset to be limited because of the lack of variance.
+Most of the photos in this dataset are outdoors urban photos and the photos containing people are never close-ups. We can already expect a model trained on this dataset to be limited because of the lack of variance.
 
 ### Algorithms and Techniques
 
@@ -52,10 +52,10 @@ The method used to solve the detection and localisation problem is described in 
 
 Here is a short explanation of this method:
 
-According to the authors of the papers the following convolutional neural, when trained only as a classifier, can be used to localise the classes it classifies. It therefore doesn't need bounding box during it's training but only labels of the different classes.
+According to the authors of the papers the following convolutional neural, when trained only as a classifier, can be used to localise the classes it classifies. It, therefore, doesn't need bounding box during its training but only labels of the different classes.
 
 The architecture of this neural network is the following:
-Convolutional neural network where the last layer is flattened by a Global Average Pooling layer (GAP). Followed by a 1 layer dense network containing as many neurones as there are classes.
+A convolutional neural network where the last layer is flattened by a Global Average Pooling layer (GAP). Followed by a 1 layer dense network containing as many neurones as there are classes.
 
 ![Image Copied on 2018-07-21 at 14.53 PM](https://i.imgur.com/MsDgBJJ.png)
 
@@ -65,11 +65,11 @@ To extract the localisation of the detected classes, the authors propose to extr
 
 ![Screen Shot 2018-07-21 at 15.14.22](https://i.imgur.com/ynUdc6o.png)
 
-The CAMs can be computed using the activation maps of the last convolutional layer (just before the GAP layer). Because each neurone is corresponds to a class, it is possible to weigh each there activation maps with the weights of the neurones.
+The CAMs can be computed using the activation maps of the last convolutional layer (just before the GAP layer). Because each neurone corresponds to a class, it is possible to weigh each there activation maps with the weights of the neurones.
 
 ![Image Copied on 2018-07-21 at 15.06 PM](https://i.imgur.com/OXNKi63.png)
 
-**Intuition:** If the weight w3 of the neurone associated to the label 1 is large, this means that the 3rd pixel (obtained by computing the GAP of the the 3rd activation map) is activated in the presence of an object of the class 1. Since the activation maps contain spatial data, each pixel corresponds to a region of the input image.
+**Intuition:** If the weight w3 of the neurone associated to the label 1 is large, this means that the 3rd pixel (obtained by computing the GAP of the 3rd activation map) is activated in the presence of an object of class 1. Since the activation maps contain spatial data, each pixel corresponds to a region of the input image.
 
 
 ### Benchmark
@@ -85,19 +85,19 @@ The detection should be fast enough to process a live video. For the output dete
 Loading the data
 - ... transforms images into a 4D tensor of shape (samples_size, 224, 224, 3) suitable for supplying to a Keras CNN
 - ... transforms class labels into one hot encoded labels.
-- ... creates a validation folder using 20% of the original training data (The INRIA person dataset originaly doesn't contain validation data)
-- ... balances the data: originaly, there are 1669 negatives and 900 positives which means that the model could reach an accuracy of 70% by always predicting negatives. We therefore do not load the excess of negatives.
+- ... creates a validation folder using 20% of the original training data (The INRIA person dataset originally doesn't contain validation data)
+- ... balances the data.
 
 ### Implementation
 
 #### Development environment
 
-Training neural nets on a laptop is a lost cause. One training epoch on a 50 layers neural network (Resnet 50) with data augmentation takes more than 45 minutes.
+Training neural nets on a laptop is a lost cause. One training epoch on a 50 layers neural network (ResNet 50) with data augmentation takes more than 45 minutes.
 
 The following Google Cloud compute engine configuration was used for this project:
 - 6 CPUs, 32 GB memory
 - GPU NVIDIA Tesla K80
-- CUDA toolkit and cuDNN installed to ensure that the GPU are used for the computation
+- CUDA toolkit and cuDNN installed to ensure that the GPU is used for the computation
 
 With this architecture, a training epoch can be completed in 3 min.
 
@@ -113,7 +113,7 @@ Training a neural network from scratch is therefore not accessible to individual
 In this project, we used nets pre-trained on ImageNet with the following configuration:
 
 - Convolutional layers of the pre-trained network followed by a GAP layer and a dense layer
-- 2 last convolutional layers unfrozen because the dataset small
+- 2 last convolutional layers unfrozen because the dataset is small
 - ReLU activation functions in the hidden layers to avoid the 'vanishing gradient'
 - Optimisation algorithm: adam (step: 0.001)
 - L2 regularisation (0.1) to avoid overfitting
@@ -126,7 +126,7 @@ In this project, we used nets pre-trained on ImageNet with the following configu
 
 ### Refinement
 
-The pre-trained model used in thins project is MobilNet. This architecture was introduced in 2017, therefore after the [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf) paper (2015) and is more performant (similar accuracy but smaller computation cost) than the architectures proposed in the paper.
+The pre-trained model used in this project is MobilNet. This architecture was introduced in 2017, therefore after the [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf) paper (2015) and is more performant (similar accuracy but smaller computation cost) than the architectures proposed in the paper.
 
 ## IV. Results
 
@@ -144,14 +144,14 @@ Here are some example outputs. The detected class highlighted with a blue frame:
 
 Observation:
 - When no human is detected, the 'negative' heat-map highlights lines, buildings, grids etc.
-- When no human is detected, the 'positive' heat-map doesn't highlights anything in particular
+- When no human is detected, the 'positive' heat-map doesn't highlight anything in particular
 - Groups of humans aren't separated by the algorithm
 
 ### Justification
 
 The final accuracy and computation time results found stronger than the benchmark result.
 
-The localisation results are satisfying for the method proposed in the paper and for the size of the dataset but there is one limitation to this method: the network doesn't separate individuals when they are in a group, close to each others.
+The localisation results are satisfying for the method proposed in the paper and for the size of the dataset but there is one limitation to this method: the network doesn't separate individuals when they are in a group, close to each other.
 
 ## V. Conclusion
 
@@ -162,16 +162,16 @@ Here are some screenshots of an application of the method implemented in this pr
 ![Image Copied on 2018-07-21 at 17.13 PM](https://i.imgur.com/Nc5OYGk.jpg)
 
 ### Reflection
-The classification and computing time are very good. However, the localisation results are  limited. This results should be put into perspective: The authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (thanks to data augmentation in particular).
+The classification and computing time are very good. However, the localisation results are limited. This results should be put into perspective: The authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (thanks to data augmentation in particular).
 
 ### Improvement
 
 The 2 principal limitations of the solution presented above are the following:
 
-- The resolution of the localisation are limited by the size of the last activation map.
-- The training set used in the project is very small, and it is difficult to find a large, balanced dataset corresponding exactly to the the problem.
+- The resolution of the localisation is limited by the size of the last activation map.
+- The training set used in the project is very small, and it is difficult to find a large, balanced dataset corresponding exactly to the problem.
 
 Based on these limitations, the possible improvements are the following:
 
-- Using sense encoder decoder networks as described in the following paper [Fully Convolutional Networks for Semantic Segmentation](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
-- Using a larger data-base like [Google Open Dataset](https://storage.googleapis.com/openimages/web/index.html)
+- Using sense encoder-decoder networks as described in the following paper [Fully Convolutional Networks for Semantic Segmentation](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
+- Using a larger database like [Google Open Dataset](https://storage.googleapis.com/openimages/web/index.html)
