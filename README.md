@@ -157,7 +157,7 @@ The localisation results are satisfying for the method proposed in the paper and
 
 ### Visualization
 
-Here are some screenshots of an application of the method implemented in this project (this application can be launched from with the `webcam.py` script -- see `python3 webcam.py --help`).
+Here are some screenshots of an application of the method implemented in this project (this application can be launched from with the `webcam_cam.py` script -- see `python3 webcam_cam.py --help`).
 
 ![Image Copied on 2018-07-21 at 17.13 PM](https://i.imgur.com/Nc5OYGk.jpg)
 
