@@ -1,7 +1,9 @@
 # Live Person Detection
-![RCcHhj8](https://i.imgur.com/CzSsSUZ.jpg)
+
+![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
+
 ``` sh
-python3 webcam_cam.py --model ./saved_model/mobilenet.h5
+python3 webcam_cam.py --model ./saved_model/mobilenet_with_gi_data.h5
 ```
 
 >**Requires:**
@@ -156,7 +158,7 @@ The localisation results are satisfying for the method proposed in the paper and
 
 Here are some screenshots of an application of the method implemented in this project (this application can be launched from with the `webcam_cam.py` script -- see `python3 webcam_cam.py --help`).
 
-![RCcHhj8](https://i.imgur.com/CzSsSUZ.jpg)
+![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
 
 ### Reflection
 The classification and computing time are very good. However, the localisation results are limited. This results should be put into perspective: the authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (mainly thanks to data augmentation).
