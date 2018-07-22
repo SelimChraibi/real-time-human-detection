@@ -1,7 +1,5 @@
 # Live Person Detection
-
-![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
-
+![RCcHhj8](https://i.imgur.com/CzSsSUZ.jpg)
 ``` sh
 python3 webcam_cam.py --model ./saved_model/mobilenet.h5
 ```
@@ -135,7 +133,7 @@ In less than 50 epochs, the MobilNet gives an **accuracy of 97.3282% and a loss 
 
 ![9](https://i.imgur.com/hNdYaTq.png)
 
-More interesting, the creation of a CAM from an input image (prediction of the class + generation of the heat-map) takes **0.31 second on a laptop**.
+More interesting, the creation of a CAM from an input image (prediction of the class + generation of the heat-map) takes less than **0.1 second on a laptop**.
 
 Here are some example outputs. The detected class is highlighted with a blue frame:
 
@@ -158,7 +156,7 @@ The localisation results are satisfying for the method proposed in the paper and
 
 Here are some screenshots of an application of the method implemented in this project (this application can be launched from with the `webcam_cam.py` script -- see `python3 webcam_cam.py --help`).
 
-![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
+![RCcHhj8](https://i.imgur.com/CzSsSUZ.jpg)
 
 ### Reflection
 The classification and computing time are very good. However, the localisation results are limited. This results should be put into perspective: the authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (mainly thanks to data augmentation).
