@@ -138,7 +138,7 @@ In less than 50 epochs, the MobilNet gives an **accuracy of 97.3282% and a loss 
 
 More interesting, the creation of a CAM from an input image (prediction of the class + generation of the heat-map) takes **0.31 second on a laptop**.
 
-Here are some example outputs. The detected class highlighted with a blue frame:
+Here are some example outputs. The detected class is highlighted with a blue frame:
 
 ![1-2](https://i.imgur.com/zhJEd1H.png)![1](https://i.imgur.com/WVLglYK.png)![2](https://i.imgur.com/AkXP5jm.png)![3](https://i.imgur.com/DAfIub0.png)![4](https://i.imgur.com/9jCGul5.png)![5](https://i.imgur.com/ZwdNGUy.png)![7](https://i.imgur.com/SJa0eZp.png)
 
