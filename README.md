@@ -1,4 +1,4 @@
-# Live Person localisation
+# Live Person Detection
 
 
 ![Image Copied on 2018-07-21 at 22.23 PM](https://i.imgur.com/9JvJ5v6.jpg)
@@ -26,7 +26,7 @@ The aim of this project is to create an algorithm capable of detecting the prese
 
 ### Metrics
 
-The algorithm will be evaluated according to metrics:
+The algorithm will be evaluated according to the following metrics:
 - The accuracy of the detections
 - The computation time of a detection
 
@@ -44,7 +44,7 @@ Originally, this dataset is unbalanced: there are 1669 negatives and 900 positiv
 
 ![Unknown](https://i.imgur.com/9Xy0M1U.png)
 
-Most of the photos in this dataset are outdoors urban photos and the photos containing people are never close-ups. We can already expect a model trained on this dataset to be limited because of the lack of variance.
+Most of the photos in this dataset are outdoors urban photos and the photos containing people are never close-ups. We can already expect a model trained on this dataset to be limited because of the lack of variance. Still, this data-set will allow us to prove the effectiveness of the method used in restricted conditions.
 
 ### Algorithms and Techniques
 
@@ -65,7 +65,7 @@ To extract the localisation of the detected classes, the authors propose to extr
 
 ![Screen Shot 2018-07-21 at 15.14.22](https://i.imgur.com/ynUdc6o.png)
 
-The CAMs can be computed using the activation maps of the last convolutional layer (just before the GAP layer). Because each neurone corresponds to a class, it is possible to weigh each there activation maps with the weights of the neurones.
+The CAMs can be computed using the activation maps of the last convolutional layer (just before the GAP layer). Because each neurone corresponds to a class, it is possible to weigh each of the activation maps with the weights of the neurones.
 
 ![Image Copied on 2018-07-21 at 15.06 PM](https://i.imgur.com/OXNKi63.png)
 
@@ -74,7 +74,7 @@ The CAMs can be computed using the activation maps of the last convolutional lay
 
 ### Benchmark
 
-For the localisation to work correctly, the classifier should be very accurate. We want the accuracy to be above 90%.
+For the localisation to work correctly, the classifier has to be very accurate. We want the accuracy to be above 90%.
 
 The detection should be fast enough to process a live video. For the output detection video to be smooth we need it to be able to process at least 5 images per second.
 
@@ -92,7 +92,7 @@ Loading the data
 
 #### Development environment
 
-Training neural nets on a laptop is a lost cause. One training epoch on a 50 layers neural network (ResNet 50) with data augmentation takes more than 45 minutes.
+Training neural nets on a laptop is a lost cause. One training epoch on a 50 layers neural network (ResNet50) with data augmentation takes more than 45 minutes.
 
 The following Google Cloud compute engine configuration was used for this project:
 - 6 CPUs, 32 GB memory
@@ -149,9 +149,9 @@ Observation:
 
 ### Justification
 
-The final accuracy and computation time results found stronger than the benchmark result.
+The final accuracy and computation time results found are stronger than the benchmark.
 
-The localisation results are satisfying for the method proposed in the paper and for the size of the dataset but there is one limitation to this method: the network doesn't separate individuals when they are in a group, close to each other.
+The localisation results are satisfying for the method proposed in the paper and for the size of the dataset. But there is one major limitation to this method: the network doesn't separate individuals when they are in a group, close to each other.
 
 ## V. Conclusion
 
@@ -162,7 +162,7 @@ Here are some screenshots of an application of the method implemented in this pr
 ![Image Copied on 2018-07-21 at 17.13 PM](https://i.imgur.com/Nc5OYGk.jpg)
 
 ### Reflection
-The classification and computing time are very good. However, the localisation results are limited. This results should be put into perspective: The authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (thanks to data augmentation in particular).
+The classification and computing time are very good. However, the localisation results are limited. This results should be put into perspective: the authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (mainly thanks to data augmentation).
 
 ### Improvement
 
@@ -173,5 +173,5 @@ The 2 principal limitations of the solution presented above are the following:
 
 Based on these limitations, the possible improvements are the following:
 
-- Using sense encoder-decoder networks as described in the following paper [Fully Convolutional Networks for Semantic Segmentation](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
+- Using encoder-decoder networks as described in the following paper [Fully Convolutional Networks for Semantic Segmentation](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
 - Using a larger database like [Google Open Dataset](https://storage.googleapis.com/openimages/web/index.html)
