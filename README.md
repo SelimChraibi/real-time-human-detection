@@ -174,4 +174,4 @@ The 2 principal limitations of the solution presented above are the following:
 Based on these limitations, the possible improvements are the following:
 
 - Using encoder-decoder networks as described in the following paper [Fully Convolutional Networks for Semantic Segmentation](https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf)
-- Using a larger database like [Google Open Dataset](https://storage.googleapis.com/openimages/web/index.html)
+- Using a larger database like the [Google Open Dataset](https://storage.googleapis.com/openimages/web/index.html)
