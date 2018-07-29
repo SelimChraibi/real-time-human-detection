@@ -24,8 +24,8 @@ This method, known as GAP localisation (Global Average Pooling localisation), wa
 The originality of GAP localisation, compared to other successful localisation methods like [Overfeat](https://arxiv.org/abs/1312.6229), [YOLO](https://pjreddie.com/media/files/papers/yolo_1.pdf) or [R-CNN](https://arxiv.org/pdf/1311.2524.pdf), is the simplicity of the network it uses and of the training it requires.
 
 Using GAP localisation, we will implement an algorithm capable of:
-- detecting the presence of humans in a video
-- identifying "regions of interest" where the humans detected are most likely to be situated
+- Detecting the presence of humans in a video
+- Identifying "regions of interest" where the humans detected are most likely to be situated
 
 This has multiple applications: surveillance cameras, human-machine interaction, pedestrian detection, automatic focus in digital cameras etc.
 In all these applications, we want the method to be fast enough to process a live video.
