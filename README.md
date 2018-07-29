@@ -11,7 +11,7 @@ This method was introduced in the following paper: [Learning Deep Features for D
 
 Its originality is the simplicity of the network it uses and of the training it requires.
 
-- An explanation of this method and of the the specific problem it is applied to in this project can be found in `Project Report.pdf`.
+- An explanation of this method and of the specific problem it is applied to in this project can be found in `Project Report.pdf`.
 
 - A demonstration of how the code shared in this repo can be used to create classification models capable of outputting localisation information can be found in the jupyter notebook `demo.ipynb`.
 
