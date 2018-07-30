@@ -44,8 +44,14 @@ During the use phase of the model, the localisation information will be extracte
 ### Metrics
 
 We will use metrics commonly used to evaluate the performance of a classification model:
-- Accuracy (number of correct predictions / total number of predictions)
+- Accuracy (number of correct predictions / total number of predictions).
 - Computation time (in our case, this will be the time needed to output both a category and a heat-map)
+
+*Why chose accuracy?* Accuracy is a bad measure for classification problems *except* when the target classes in the data are well balanced. This is easy to ensure in the case of binary classification.
+
+Most of the parameter tuning effort went into the choice of the best number of layers of the convolutional network to unfreeze and of the pertained model.
+
+Since the data is pretty similar to that with which the pertained networks
 
 ## II. Analysis
 
@@ -70,6 +76,14 @@ After these two last steps we have the following distribution:
 ![Image Copied on 2018-07-29 at 10.19 AM](https://i.imgur.com/RY4ux8l.png)
 
 All in all, this dataset is quite small. To mitigate this limitation we use data augmentation (width and height shift, shear, zoom, horizontal flip).
+
+Another interesting limitation of this dataset is that most of the photos are of 4 types of which this the repartition:
+
+![Untitled.001](https://i.imgur.com/4YMWRCL.png)
+
+Within each group can be distinguished different categories:
+
+![Untitled.002](https://i.imgur.com/N9e1U3s.png)![Untitled.003](https://i.imgur.com/bQnNSc8.png)![Untitled.004](https://i.imgur.com/iTqPGiR.png)![Untitled.005](https://i.imgur.com/PipbfCb.png)
 
 ### Algorithm and Technique
 
@@ -237,19 +251,20 @@ cam /= np.max(cam)
 cam  = cv2.resize(cam, (height, width), interpolation = cv2.INTER_CUBIC)
 ```
 
-### Refinement
+### Refinement and parameter tuning
 
-It is interesting to note that because of the limited size of the dataset, it is difficult to train a very deep network such as ResNet50.
+- Most of the parameter tuning effort went into the choice of the best number of unfrozen layers in convolutional network.
+Since the data is pretty similar to that with which the pre-trained networks where trained, it is not necessary to train many of the last layers. Moreover, because the dataset is small, when too many layers are unfrozen, the model overfits the data.
 
-Here are the learning curves for this mode (evolution of the accuracy and loss during the training iteration, on the training and testing set):
+- Not much hyper-parameter tuning was needed apart from that. The values recommended by Keras (learning rate, intensity of the regularisation for examples)  gave the best results.
 
+- It is interesting to note that because of the limited size of the dataset, it is difficult to train a very deep network such as ResNet50.
+Here are the learning curves for this model (evolution of the accuracy and loss during the training iteration, on the training and testing set):
 ![10](https://i.imgur.com/AJYWBFJ.png)
-
 This is a good example of overfitting: after a few iterations, the results become very good on the training set but stay very bad on the validation set.
+We, therefore, prefer smaller networks.
 
-We will, therefore, prefer smaller networks.
-
-The pre-trained model used in this project is MobilNet. This architecture was introduced in 2017, therefore after the [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf) paper (2015) and is more performant (similar accuracy but smaller computation cost) than the architectures proposed in the paper.
+- The pre-trained model used in this project is MobilNet. This architecture was introduced in 2017, therefore after the [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf) paper (2015) and is more performant (similar accuracy but smaller computation cost) than the architectures proposed in the paper.
 
 
 ## IV. Results
@@ -353,6 +368,25 @@ This results should be put into perspective: the authors of the paper used at le
 All in all, we have proved that:
 - using a network trained only as a classifier, we can obtain localisation information
 - the constraints that the GAP method imposes on the architecture (only one dense layer at the end of the network preceded by a GAP layer) don't harm the classification results
+
+Here is a step by step recap of the process I went through to build this project:
+- Loading and pre-processing the dataset
+- I then started with a simple implementation with a network made from scratch in Keras (no transfer learning). This attempt wasn't successful... Here is an example of the CAM I got with this first method:
+![1-1](https://i.imgur.com/JSHg3Pj.jpg)
+- Using transfer learning with a ResNet50 neural network I created a new network. This wasn't successful either...
+- I finally tried to implement transfer learning with a smaller network, MobileNet, which gave me the best results.
+- The last step was to optimise and factorise the code
+
+But the project took more than 5 neatly independent steps... Here are some of the things I learned during this project:
+- Debugging a neural network is HARD: I realised many times after 1 or 2 hours of training a model that I hadn't implemented a feature to save my weights or that I made a small mistake in the training parameters etc. Sometimes my computer will crash after 1 hour or the connection to the cloud computing engine would get interrupted
+- Computing on GPU is far more efficient than on CPU. I also learned to install the CUDA toolkit and cuDNN
+- I also got to test out both AWS and Google Cloud. Google Cloud seems overall to be a better solution for occasional use and for a project, especially since they offer one year of free usage
+- Choosing the right dataset is very important as well as balancing it (in the case of classification problem)
+- When manipulating neural network, it is important to take into consideration the complexity of the code (cost in time) and avoiding duplicate operation can be crucial
+
+The two biggest challenges were:
+- To get an initial version of the code working!
+- To implement a CAM generation algorithm efficient enough to be used in a live video stream. This was also the most interesting part of the project because it forced me to rethink the whole architecture of my code (from a bunch of function to a more efficient Oriented Object implementation)
 
 ### Improvement
 
