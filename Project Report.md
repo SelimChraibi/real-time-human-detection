@@ -73,17 +73,24 @@ Originally, the dataset is unbalanced: there are 1669 negatives and 900 positive
 The dataset also doesn't contain a validation set: 20% of the training data is loaded as validation data.
 
 After these two last steps we have the following distribution:
-![Image Copied on 2018-07-29 at 10.19 AM](https://i.imgur.com/RY4ux8l.png)
+<!-- ![Image Copied on 2018-07-29 at 10.19 AM](https://i.imgur.com/RY4ux8l.png) -->
+
+|Classes|`neg`|`pos`|Total|
+|:-----:|:-:|:-:|:---:|
+|Train  |435|423|858|
+|Valid  |184|189|373|
+|Test  |227|288|515|
+|       |846|900|1746|
 
 All in all, this dataset is quite small. To mitigate this limitation we use data augmentation (width and height shift, shear, zoom, horizontal flip).
 
-Another interesting limitation of this dataset is that most of the photos are of 4 types of which this the repartition:
+<!-- Another interesting limitation of this dataset is that most of the photos are of 4 types of which this the repartition:
 
-![Untitled.001](https://i.imgur.com/4YMWRCL.png)
+![Untitled.001](https://i.imgur.com/4YMWRCL.png) -->
 
-Within each group can be distinguished different categories:
+<!-- Within each group can be distinguished different categories:
 
-![Untitled.002](https://i.imgur.com/N9e1U3s.png)![Untitled.003](https://i.imgur.com/bQnNSc8.png)![Untitled.004](https://i.imgur.com/iTqPGiR.png)![Untitled.005](https://i.imgur.com/PipbfCb.png)
+![Untitled.002](https://i.imgur.com/N9e1U3s.png)![Untitled.003](https://i.imgur.com/bQnNSc8.png)![Untitled.004](https://i.imgur.com/iTqPGiR.png)![Untitled.005](https://i.imgur.com/PipbfCb.png) -->
 
 ### Algorithm and Technique
 
@@ -114,7 +121,7 @@ When there are $k>2$ labels, the network should have $k$ neurones in the last la
 The choice of the number of layers and of neurones per (non-final) layer depends on the problem and can be optimised using heuristics or by testing multiple architectures.
 
 **Limitations of dense networks for image data:**
-- ** Non-spatial data**: Dense network take as an input a vector. Therefore, an image must be *flattened* in order to be compatible with the input format, which removes the spatial data contained in the image.
+- **Non-spatial data**: Dense network take as an input a vector. Therefore, an image must be *flattened* in order to be compatible with the input format, which removes the spatial data contained in the image.
 - **Redundancy of the parameters:** We expect a pattern to be to be recognised whether it is at the bottom left or at the top right corner of the image. In other words, the parameters should be shared: the parameters responsible for the recognition of a pattern bottom left corner to be the same as those responsible for the recognition of that pattern at the top right corner. This is not the case in dense networks.
 - **Number of parameters:** Because dense networks are **fully connected** (every input gets its own parameter), even small networks require lots of parameters and are therefore very long to train.
 
@@ -369,6 +376,7 @@ All in all, we have proved that:
 - using a network trained only as a classifier, we can obtain localisation information
 - the constraints that the GAP method imposes on the architecture (only one dense layer at the end of the network preceded by a GAP layer) don't harm the classification results
 
+<!--  
 Here is a step by step recap of the process I went through to build this project:
 - Loading and pre-processing the dataset
 - I then started with a simple implementation with a network made from scratch in Keras (no transfer learning). This attempt wasn't successful... Here is an example of the CAM I got with this first method:
@@ -378,7 +386,7 @@ Here is a step by step recap of the process I went through to build this project
 - The last step was to optimise and factorise the code
 
 But the project took more than 5 neatly independent steps... Here are some of the things I learned during this project:
-- Debugging a neural network is HARD: I realised many times after 1 or 2 hours of training a model that I hadn't implemented a feature to save my weights or that I made a small mistake in the training parameters etc. Sometimes my computer will crash after 1 hour or the connection to the cloud computing engine would get interrupted
+- Debugging a neural network is HARD: I realised many times after 1 or 2 hours of training a model that I hadn't implemented a feature to save my weights or that I made a small mistake in the training parameters etc. Sometimes my computer would crash after 1 hour or the connection to the cloud computing engine would get interrupted
 - Computing on GPU is far more efficient than on CPU. I also learned to install the CUDA toolkit and cuDNN
 - I also got to test out both AWS and Google Cloud. Google Cloud seems overall to be a better solution for occasional use and for a project, especially since they offer one year of free usage
 - Choosing the right dataset is very important as well as balancing it (in the case of classification problem)
@@ -387,6 +395,8 @@ But the project took more than 5 neatly independent steps... Here are some of th
 The two biggest challenges were:
 - To get an initial version of the code working!
 - To implement a CAM generation algorithm efficient enough to be used in a live video stream. This was also the most interesting part of the project because it forced me to rethink the whole architecture of my code (from a bunch of function to a more efficient Oriented Object implementation)
+
+ -->
 
 ### Improvement
 
