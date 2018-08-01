@@ -229,7 +229,7 @@ Architecture:
 - Only the 2 last convolutional layers are unfrozen (because the dataset is small)
 
 Training configuration:
-- ReLU activation functions in the hidden layers to avoid the 'vanishing gradient'
+<!-- - ReLU activation functions in the hidden layers to avoid the 'vanishing gradient' -->
 - Optimisation algorithm: adam (step: 0.001)
 - L2 regularisation (0.1) to avoid overfitting
 - Batch-Normalisation to avoid overfitting
