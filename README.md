@@ -3,13 +3,13 @@
 
 ![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
 
-Neural Networks are often described as black boxes. In this project, however, we will use a method that is based on the **interpretation of the internal parameters of a neural network** to implement an application capable of:
+Neural Networks are often described as black boxes. In this project, however, I used a method that is based on the **interpretation of the internal parameters of a neural network** to implement an application capable of:
 - Detecting the presence of humans in a live video
 - Identifying *"regions of interest"* where the individuals detected are most likely to be situated
 
 This method was introduced in the following paper: [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf).
 
-Its originality is the simplicity of the network it uses and of the training it requires.
+Its originality comes from the simplicity of the network it uses and of the training it requires.
 
 - An explanation of this method and of the specific problem it is applied to in this project can be found in `Project Report.pdf`.
 
