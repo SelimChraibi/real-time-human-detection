@@ -23,8 +23,10 @@ print("💾" + BLUE + " Model loaded." + END)
 
 def addContours(input_img, output_img, draw_bounding_box=True, draw_contours=False, threshold=100):
     """
+	>>> Work In Progress <<<
     Detects the bounding boxes and/or contours in the input image and adds them to the output image
     Returns the modified output_img
+	>>> Work In Progress <<<
     """
 	# Convert image to gray
     gray = cv2.cvtColor(input_img, cv2.COLOR_BGR2GRAY)
@@ -68,7 +70,7 @@ while 1:
 	cam, prediction = clf.cam(img, class_number=1)
 
 	# Detect the contours and or bounding boxes in the cam
-	img = addContours(input_img=cam, output_img=img, draw_bounding_box=True, draw_contours=False, threshold=100)
+	# img = addContours(input_img=cam, output_img=img, draw_bounding_box=True, draw_contours=False, threshold=100)
 
 	# Add the cam to the original image
 	img = cv2.addWeighted(cam, 0.5, img, 0.8, 0)
