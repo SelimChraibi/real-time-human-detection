@@ -15,9 +15,9 @@ Its originality comes from the simplicity of both the network it uses and of the
 
 [![page](https://i.imgur.com/XP6aiLH.png)](https://selim78.github.io/real-time-human-detection/)
 
-- A demonstration of how the code shared in this repo can be used (to create classification models capable of outputting localisation information) can be found in the jupyter notebook [`demo.ipynb`](https://github.com/Selim78/real-time-human-detection/blob/master/demo.ipynb).
+- A demonstration of how the code shared in this repo can be used (to create classification models capable of outputting localisation information) can be found in the jupyter notebook [`demo.ipynb`](https://nbviewer.jupyter.org/github/Selim78/real-time-human-detection/blob/master/demo.ipynb).
 
-[![ipnb](https://i.imgur.com/mYZfwXl.png)](https://github.com/Selim78/real-time-human-detection/blob/master/demo.ipynb)
+[![ipnb](https://i.imgur.com/mYZfwXl.png)](https://nbviewer.jupyter.org/github/Selim78/real-time-human-detection/blob/master/demo.ipynb)
 
 ## Application using the trained models
 
