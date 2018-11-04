@@ -37,9 +37,9 @@ We will use metrics commonly used to evaluate the performance of a classificatio
 
 *Why chose accuracy?* Accuracy is a bad measure for classification problems *except* when the target classes in the data are well balanced. This is easy to ensure in the case of binary classification.
 
-Most of the parameter tuning effort went into the choice of the best number of layers of the convolutional network to unfreeze and of the pretained model.
+Most of the parameter tuning effort went into the choice of the best number of layers of the convolutional network to unfreeze and of the pretrained model.
 
-Since the data is pretty similar to that with which the pretained networks
+Since the data is pretty similar to that with which the pretrained networks
 
 ## II. Analysis
 
