@@ -9,11 +9,14 @@ Neural Networks are often described as black boxes. In this project, however, I 
 
 This method was introduced in the following paper: [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf).
 
-Its originality comes from the simplicity of the network it uses and of the training it requires.
+Its originality comes from the simplicity of both the network it uses and of the training it requires.
 
-- An explanation of this method and of the specific problem it is applied to in this project can be found in `Project Report.pdf`.
+- An explanation of this method and of the specific problem it is applied to in this project can be found in [`Project Report.pdf`](https://github.com/Selim78/real-time-human-detection).
 
-- A demonstration of how the code shared in this repo can be used to create classification models capable of outputting localisation information can be found in the jupyter notebook `demo.ipynb`.
+[![pdf](https://i.imgur.com/B6YCmjn.png)](https://github.com/Selim78/real-time-human-detection)
+- A demonstration of how the code shared in this repo can be used to create classification models capable of outputting localisation information can be found in the jupyter notebook [`demo.ipynb`](https://github.com/Selim78/real-time-human-detection/blob/master/demo.ipynb).
+
+[![ipnb](https://i.imgur.com/mYZfwXl.png)](https://github.com/Selim78/real-time-human-detection/blob/master/demo.ipynb)
 
 ## Application using the trained models
 
