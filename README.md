@@ -1,7 +1,10 @@
 
 # Real Time Human Detection
 
-![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
+<img src="https://media.giphy.com/media/3JU7xOanvSnCBKbUhK/giphy.gif" alt="drawing" width="1000"/>
+
+
+<img src="https://i.imgur.com/RCcHhj8.jpg" alt="drawing" width="1000"/>
 
 Neural Networks are often described as black boxes. In this project, however, I used a method that is based on the **interpretation of the internal parameters of a neural network** to implement an application capable of:
 - Detecting the presence of humans in a live video
