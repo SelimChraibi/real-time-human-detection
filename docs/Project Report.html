@@ -1,0 +1,636 @@
+<!DOCTYPE html><html><head>
+      <title>Project Report</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/selim/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="live-person-detection">Live Person Detection</h1>
+
+<p><img src="https://i.imgur.com/RCcHhj8.jpg" alt="Screen Shot 2018-07-22 at 12.17.35"></p>
+<h2 class="mume-header" id="i-definition">I. Definition</h2>
+
+<h3 class="mume-header" id="project-overview">Project Overview</h3>
+
+<p>Neural Networks are often described as black boxes. In this project, however, we will use a method that is based on the interpretation of the internal parameters of a neural network.<br>
+This method, known as GAP localisation (Global Average Pooling localisation), was introduced in the following paper: <a href="http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf">Learning Deep Features for Discriminative Localization</a>.</p>
+<p>The originality of GAP localisation, compared to other successful localisation methods like <a href="https://arxiv.org/abs/1312.6229">Overfeat</a>, <a href="https://pjreddie.com/media/files/papers/yolo_1.pdf">YOLO</a> or <a href="https://arxiv.org/pdf/1311.2524.pdf">R-CNN</a>, is the simplicity of the network it uses and of the training it requires.</p>
+<p>Using GAP localisation, we will implement an algorithm capable of:</p>
+<ul>
+<li>Detecting the presence of humans in a video</li>
+<li>Identifying &quot;regions of interest&quot; where the humans detected are most likely to be situated</li>
+</ul>
+<p>This has multiple applications: surveillance cameras, human-machine interaction, pedestrian detection, automatic focus in digital cameras etc.<br>
+In all these applications, we want the method to be fast enough to process a live video.</p>
+<h3 class="mume-header" id="problem-statement">Problem Statement</h3>
+
+<p>Let&apos;s define our problem in machine learning terms.</p>
+<p>This is a supervised learning problem. Our model will take as an input an image and should output both:</p>
+<ul>
+<li>a category encoded by 0 or 1 (1 if at least one person is present in the image 0 if there are none)</li>
+<li>a heat-map indicating the &quot;regions of interest&quot;</li>
+</ul>
+<p>We will see that, although we expect some localisation information in the output of the GAP model, the model will only be trained to solve a classification task.<br>
+During the use phase of the model, the localisation information will be extracted from the internal activations of the classification model.</p>
+<h3 class="mume-header" id="metrics">Metrics</h3>
+
+<p>We will use metrics commonly used to evaluate the performance of a classification model:</p>
+<ul>
+<li>Accuracy (number of correct predictions / total number of predictions).</li>
+<li>Computation time (in our case, this will be the time needed to output both a category and a heat-map)</li>
+</ul>
+<p><em>Why chose accuracy?</em> Accuracy is a bad measure for classification problems <em>except</em> when the target classes in the data are well balanced. This is easy to ensure in the case of binary classification.</p>
+<p>Most of the parameter tuning effort went into the choice of the best number of layers of the convolutional network to unfreeze and of the pertained model.</p>
+<p>Since the data is pretty similar to that with which the pertained networks</p>
+<h2 class="mume-header" id="ii-analysis">II. Analysis</h2>
+
+<h3 class="mume-header" id="data-exploration-and-visualisation">Data Exploration and visualisation</h3>
+
+<p>The data used to train the classifier comes from the <a href="http://pascal.inrialpes.fr/data/human/">INRIA person dataset</a>.</p>
+<p><img src="https://i.imgur.com/9Xy0M1U.png" alt="Unknown"><br>
+<img src="https://i.imgur.com/zuvobLo.png" alt="Image Copied on 2018-07-29 at 10.16 AM"></p>
+<p>This dataset contains images with persons (positive) and without persons (negative).</p>
+<p>Most of the photos in this dataset are outdoors urban photos and the photos containing people are never close-ups or portraits. We can already expect a model trained on this dataset to be limited because of the lack of variance. Still, this data-set will allow us to prove the effectiveness of the method used in restricted conditions.</p>
+<p>The images have different shape and sizes, but all will be resized as 224, 224 images.</p>
+<p>Originally, the dataset is unbalanced: there are 1669 negatives and 900 positives which means that a classifier can reach an accuracy of 70% by always predicting negatives. The excess of negatives is therefore not loaded.</p>
+<p>The dataset also doesn&apos;t contain a validation set: 20% of the training data is loaded as validation data.</p>
+<p>After these two last steps we have the following distribution:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Classes</th>
+<th style="text-align:center"><code>neg</code></th>
+<th style="text-align:center"><code>pos</code></th>
+<th style="text-align:center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Train</td>
+<td style="text-align:center">435</td>
+<td style="text-align:center">423</td>
+<td style="text-align:center">858</td>
+</tr>
+<tr>
+<td style="text-align:center">Valid</td>
+<td style="text-align:center">184</td>
+<td style="text-align:center">189</td>
+<td style="text-align:center">373</td>
+</tr>
+<tr>
+<td style="text-align:center">Test</td>
+<td style="text-align:center">227</td>
+<td style="text-align:center">288</td>
+<td style="text-align:center">515</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">846</td>
+<td style="text-align:center">900</td>
+<td style="text-align:center">1746</td>
+</tr>
+</tbody>
+</table>
+<p>All in all, this dataset is quite small. To mitigate this limitation we use data augmentation (width and height shift, shear, zoom, horizontal flip).</p>
+<h3 class="mume-header" id="algorithm-and-technique">Algorithm and Technique</h3>
+
+<p>The originality of the technique we use comes from the fact that:</p>
+<ul>
+<li>it only uses one convolutional network, with a fixed input size</li>
+<li>the model only needs to be trained as a classifier</li>
+<li>the dataset doesn&apos;t need to contain &quot;bounding box&quot; information (only labels are required)</li>
+</ul>
+<p>To introduce this method, let&apos;s start with a quick explanation of what dense/convolutional networks are.</p>
+<h4 class="mume-header" id="dense-networks">Dense networks</h4>
+
+<p><strong>Artificial neurone</strong>: A network made up of only 1 neurone can be understood as a logistic regression. It takes as an input a vector <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mo>=</mo><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">X = (x_1, ..., x_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> and outputs</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mo>&#x2211;</mo><msub><mi>x</mi><mi>i</mi></msub><msub><mi>w</mi><mi>i</mi></msub><mo>&#x2212;</mo><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">y = f(\sum x_i w_i - b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.6000100000000002em;vertical-align:-0.55001em;"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mop op-symbol large-op" style="position:relative;top:-0.000004999999999977245em;">&#x2211;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span></span></p>
+<p>where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">(w_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathit">b</span></span></span></span>, known as the <em>weights</em> and <em>bias</em>, are the parameters of the neurone and where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span></span></span></span> is its <em>activation function</em>. Depending on the activation function, the output is a real number between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#x2212;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">&#x2212;</span><span class="mord">1</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> or between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. Activation functions are more or less smooth versions of the threshold function.</p>
+<p>Just as is the case for a logistic regression, the training step consist in adjusting the parameters of the network to minimise an error function, also called the <em>loss function</em>, that evaluated the difference between the output computed by the neurone and the expected output.</p>
+<p><strong>Multi-layered dense network</strong>: Dense neural networks are organised in layers. In a given layer, all the neurones have the same input vector. The first layer takes as an input the input of the network. Each one of the following layers take as an input the outputs of its previous layer.</p>
+<p>In a binary classification problem, the network should have a unique output (eg. 0 encodes label 0, 1 encodes label 1). Therefore, the last layer of the network should have one neurone.<br>
+When there are <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k&gt;2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> labels, the network should have <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> neurones in the last layer, i.e. one per labels. The output of the network should then be one-hot encoded (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,0,0,0,...]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mclose">]</span></span></span></span> encodes label 0, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[0,1,0,0,...]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mclose">]</span></span></span></span> encodes label 1, etc.). (We will see, however, that our network does not abide by this rule: despite the fact that the problem we tackle is a binary classification problem, the GAP method requires 2 neurones in the last layer.)</p>
+<p>The choice of the number of layers and of neurones per (non-final) layer depends on the problem and can be optimised using heuristics or by testing multiple architectures.</p>
+<p><strong>Limitations of dense networks for image data:</strong></p>
+<ul>
+<li><strong>Non-spatial data</strong>: Dense network take as an input a vector. Therefore, an image must be <em>flattened</em> in order to be compatible with the input format, which removes the spatial data contained in the image.</li>
+<li><strong>Redundancy of the parameters:</strong> We expect a pattern to be to be recognised whether it is at the bottom left or at the top right corner of the image. In other words, the parameters should be shared: the parameters responsible for the recognition of a pattern bottom left corner to be the same as those responsible for the recognition of that pattern at the top right corner. This is not the case in dense networks.</li>
+<li><strong>Number of parameters:</strong> Because dense networks are <strong>fully connected</strong> (every input gets its own parameter), even small networks require lots of parameters and are therefore very long to train.</li>
+</ul>
+<h4 class="mume-header" id="convolutional-networks-or-convnet-or-cnn">Convolutional networks (or ConvNet or CNN)</h4>
+
+<p>ConvNets are an answer to the limitation of dense networks.</p>
+<p>ConvNets preserve spatial data:</p>
+<p>They handle <em>tensors</em>, which are arrays of dimension (sample_size x depth x height x width) where:</p>
+<ul>
+<li>in the first layer, the depth is the number of colours of the input image and in the following layers, the number of activation maps (which we define below)</li>
+<li>in the first layer, the height and width are the dimensions of the input image and in the following layers, the dimension of the activation maps</li>
+</ul>
+<p>ConvNets are organised in layers which are only <em>partially</em> connected. Those layers are of two types:</p>
+<ul>
+<li><strong>Convolutional layers.</strong> These layers apply multiple convolutional operations to the input image. The parameters are the layers are the coefficients of the convolutions&apos; kernels. The outputs of the convolutions are called <em>activation maps</em>.</li>
+<li><strong>Pooling layers.</strong>  There are two kinds of pooling layers:
+<ul>
+<li><em>Max Pooling</em> of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>&#xD7;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \times j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>: the activation map is split in a grid where each cell is of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>&#xD7;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \times j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>. For each input cell, the associated output is the maximum value in the cell.</li>
+<li><em>Average polling</em> of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>&#xD7;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \times j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>: For each input cell, the associated output is the mean of the cell.</li>
+<li>When the pooling size is equal to the size of the activation map, the pooling operation are referred to as  <em>Global Max Pooling</em> et <em>Global Average Pooling</em> (their output are consequently of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&#xD7;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \times 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Effect of the layers on the dimension of the tensors:</strong></p>
+<ul>
+<li>A convolutional layer that holds <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathit">n</span></span></span></span> filters has a depth (number of activation maps) of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathit">n</span></span></span></span></li>
+<li>A pooling layer of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>&#xD7;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \times j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> shrinks the dimension of the activation maps by a factor <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>&#xD7;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \times j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span> before it passes them on as an input to the following convolutional layer</li>
+</ul>
+<p>The final output of the convolutional layer is a flat vector. This vector is given as an input to a dense network responsible to classify it.</p>
+<p><img src="https://i.imgur.com/76z63Ux.png" alt="Image Copied on 2018-07-29 at 18.24 PM"></p>
+<h4 class="mume-header" id="global-average-pooling-localisation">Global Average Pooling localisation</h4>
+
+<p>The method used to solve the detection and localisation problem, GAP localisation, is described in the following paper: <a href="http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf">Learning Deep Features for Discriminative Localization</a>.</p>
+<p>Here is a short explanation:</p>
+<p>According to the authors of the papers the following convolutional neural, when trained only as a classifier, can be used to localise the classes it classifies. It, therefore, doesn&apos;t need bounding box during its training but only labels of the different classes.</p>
+<p>The architecture of this neural network is the following:<br>
+A convolutional neural network where the last layer is flattened by a Global Average Pooling layer (GAP). Followed by a 1 layer dense network containing as many neurones as there are classes.</p>
+<p><img src="https://i.imgur.com/MsDgBJJ.png" alt="Image Copied on 2018-07-21 at 14.53 PM"></p>
+<p>In our case there are 2 classes, therefore 2 neurones in the last layer.</p>
+<p>To extract the localisation of the detected classes, the authors propose to extract the Class Activation Maps (CAM). These maps are heat-maps where the hot regions are the regions used by the ConvNet to evaluate a class probability given the input image.</p>
+<p><img src="https://i.imgur.com/ynUdc6o.png" alt="Screen Shot 2018-07-21 at 15.14.22"></p>
+<p>The CAMs can be computed using the activation maps of the last convolutional layer (just before the GAP layer). Because each neurone corresponds to a class, it is possible to weigh each of the activation maps with the weights of the neurones. The computation is the following:</p>
+<p><img src="https://i.imgur.com/OXNKi63.png" alt="Image Copied on 2018-07-21 at 15.06 PM"></p>
+<p><strong>Intuition:</strong> If the weight w3 of the neurone associated to the label 1 is large, this means that the 3rd pixel (obtained by computing the GAP of the 3rd activation map) is activated in the presence of an object of class 1. Since the activation maps contain spatial data, each pixel corresponds to a region of the input image.</p>
+<h3 class="mume-header" id="benchmark">Benchmark</h3>
+
+<p><strong>Accuracy:</strong><br>
+An accuracy above 95% is considered to be very good for a binary classifier (<a href="https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html">dog/cat classification</a>)<br>
+The results will hopefully prove that imposing a GAP architecture doesn&apos;t harm the classification results.</p>
+<p><strong>Computation time:</strong><br>
+The detection should be fast enough to process a live video. For the output detection video to be smooth we need it to be able to process at least 5 images per second.</p>
+<h2 class="mume-header" id="iii-methodology">III. Methodology</h2>
+
+<h3 class="mume-header" id="data-preprocessing">Data Preprocessing</h3>
+
+<p>Loading the data</p>
+<ul>
+<li>... transform each image into a normalised 4D tensor of shape (1, 224, 224, 3) suitable for supplying to a Keras CNN</li>
+<li>... aggregates all the tensor of the sample into a larger 4D tensor of shape (samples_size, 224, 224, 3)</li>
+<li>... transforms class labels into one hot encoded labels.</li>
+<li>... creates a validation folder using 20% of the original training data.</li>
+<li>... balances the data.</li>
+</ul>
+<h3 class="mume-header" id="implementation">Implementation</h3>
+
+<h4 class="mume-header" id="development-environment">Development environment</h4>
+
+<p>Training neural nets on a laptop is a lost cause. One training epoch on a 50 layers neural network (ResNet50) with data augmentation takes more than 45 minutes.</p>
+<p>The following Google Cloud compute engine configuration was used for this project:</p>
+<ul>
+<li>6 CPUs, 32 GB memory</li>
+<li>GPU NVIDIA Tesla K80</li>
+<li>CUDA toolkit and cuDNN installed to ensure that the GPU is used for the computation</li>
+</ul>
+<p>With this architecture, a training epoch can be completed in 3 min.</p>
+<p>The algorithm was implemented using Python 3 and the Keras and Tensorflow libraries.</p>
+<h4 class="mume-header" id="transfert-learning">Transfert learning</h4>
+
+<p>In 2017, the UC Berkeley team composed of Yang You, Zhao Zhang, James Demmel, Kurt Keutzer boasted:</p>
+<blockquote>
+<p>&#x201C;We finish the 100-epoch ImageNet training with AlexNet in 24 minutes, which is the world record. Same as Facebook&#x2019;s result, we finish the 90-epoch ImageNet training with ResNet-50 in one hour. However, our hardware budget is only 1.2 million USD, which is 3.4 times lower than Facebook&#x2019;s 4.1 million USD.&#x201D;</p>
+</blockquote>
+<p>Training a neural network from scratch is therefore not accessible to individuals. A solution is to reuse a pre-trained network.</p>
+<h4 class="mume-header" id="architecture-and-training-configuration">Architecture and training configuration</h4>
+
+<p>In this project, we used nets pre-trained on ImageNet (provided by the Keras library). All the configurations of the network used are listed below (the exact implementation can be found in <code>utilities/classifier.py</code>):</p>
+<p>Architecture:</p>
+<ul>
+<li>Convolutional layers of the pre-trained network followed by a GAP layer and a dense layer</li>
+<li>Only the 2 last convolutional layers are unfrozen (because the dataset is small)</li>
+</ul>
+<p>Training configuration:</p>
+<ul>
+<li>Optimisation algorithm: adam (step: 0.001)</li>
+<li>L2 regularisation (0.1) to avoid overfitting</li>
+<li>Batch-Normalisation to avoid overfitting</li>
+<li>Data augmentation to avoid overfitting</li>
+<li>Batch-size: 32</li>
+<li>Cross-Validation: only the model with the lowest validation loss is saved</li>
+</ul>
+<h3 class="mume-header" id="generation-of-the-cam-images">Generation of the CAM images</h3>
+
+<p>This part is the most tricky since it is not implemented in the Keras library. It is also easy to get wrong: all the implementation that can be found online created a new Keras <code>Model</code> (taking as an input an image and outputting a CAM) at each time a CAM needs to be generated. This is very inefficient. In this implementation, redundant calls are eliminated: only one CAM-generating model is created.</p>
+<p>The complete commented implementation can be found in <code>utilities/classifier.py</code> in the <code>Classifier.cam()</code> method. Here is an excerpt:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># Initialize with the cam with right shape</span>
+cam <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>dtype <span class="token operator">=</span> np<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> shape <span class="token operator">=</span> conv_outputs<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Weighted sum of the cam = \Sum_i (cam_i * weight_i)</span>
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> w <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>class_weights<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> class_number<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cam <span class="token operator">+=</span> w <span class="token operator">*</span> conv_outputs<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span>
+
+<span class="token comment"># Normalise and resize the cam</span>
+cam <span class="token operator">/=</span> np<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>cam<span class="token punctuation">)</span>
+
+<span class="token comment"># Resize the cam</span>
+cam  <span class="token operator">=</span> cv2<span class="token punctuation">.</span>resize<span class="token punctuation">(</span>cam<span class="token punctuation">,</span> <span class="token punctuation">(</span>height<span class="token punctuation">,</span> width<span class="token punctuation">)</span><span class="token punctuation">,</span> interpolation <span class="token operator">=</span> cv2<span class="token punctuation">.</span>INTER_CUBIC<span class="token punctuation">)</span>
+</pre><h3 class="mume-header" id="refinement-and-parameter-tuning">Refinement and parameter tuning</h3>
+
+<ul>
+<li>
+<p>Most of the parameter tuning effort went into the choice of the best number of unfrozen layers in convolutional network.<br>
+Since the data is pretty similar to that with which the pre-trained networks where trained, it is not necessary to train many of the last layers. Moreover, because the dataset is small, when too many layers are unfrozen, the model overfits the data.</p>
+</li>
+<li>
+<p>Not much hyper-parameter tuning was needed apart from that. The values recommended by Keras (learning rate, intensity of the regularisation for examples)  gave the best results.</p>
+</li>
+<li>
+<p>It is interesting to note that because of the limited size of the dataset, it is difficult to train a very deep network such as ResNet50.<br>
+Here are the learning curves for this model (evolution of the accuracy and loss during the training iteration, on the training and testing set):<br>
+<img src="https://i.imgur.com/AJYWBFJ.png" alt="10"><br>
+This is a good example of overfitting: after a few iterations, the results become very good on the training set but stay very bad on the validation set.<br>
+We, therefore, prefer smaller networks.</p>
+</li>
+<li>
+<p>The pre-trained model used in this project is MobilNet. This architecture was introduced in 2017, therefore after the <a href="http://cnnlocalization.csail.mit.edu/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf">Learning Deep Features for Discriminative Localization</a> paper (2015) and is more performant (similar accuracy but smaller computation cost) than the architectures proposed in the paper.</p>
+</li>
+</ul>
+<h2 class="mume-header" id="iv-results">IV. Results</h2>
+
+<h3 class="mume-header" id="model-evaluation-and-validation">Model Evaluation and Validation</h3>
+
+<p>Here are the learning curves:</p>
+<p><img src="https://i.imgur.com/hNdYaTq.png" alt="9"></p>
+<p>The learning curves show a good convergence in less than 50 epochs. During all the training iterations, and except for some spikes here and there, the results are similar on the training and validation sets. This means that this network didn&apos;t suffer from overfitting.</p>
+<p>The model doesn&apos;t underfit either: in less than 50 epochs, the MobilNet gives an <strong>accuracy of 97.3282% and a loss of 5.20%</strong> on the <strong>test set</strong>.</p>
+<p>More interesting, the creation of a CAM from an input image (prediction of the class + generation of the heat-map) takes less than <strong>0.1 second on a laptop</strong>.</p>
+<p>Here are some example outputs. The detected class is highlighted with a blue frame:</p>
+<p><img src="https://i.imgur.com/zhJEd1H.png" alt="1-2"><img src="https://i.imgur.com/WVLglYK.png" alt="1"><img src="https://i.imgur.com/AkXP5jm.png" alt="2"><img src="https://i.imgur.com/DAfIub0.png" alt="3"><img src="https://i.imgur.com/9jCGul5.png" alt="4"><img src="https://i.imgur.com/ZwdNGUy.png" alt="5"><img src="https://i.imgur.com/SJa0eZp.png" alt="7"></p>
+<p>Observation:</p>
+<ul>
+<li>When no human is detected, the &apos;negative&apos; heat-map highlights lines, buildings, grids etc.</li>
+<li>When no human is detected, the &apos;positive&apos; heat-map doesn&apos;t highlight anything in particular</li>
+<li>Groups of humans aren&apos;t separated by the algorithm</li>
+</ul>
+<h3 class="mume-header" id="justification">Justification</h3>
+
+<p>The final accuracy and computation time results found are stronger than the benchmark.</p>
+<p>The localisation results are satisfying for the method proposed in the paper and for the size of the dataset. But there is one major limitation to this method: the network doesn&apos;t separate individuals when they are in a group, close to each other.</p>
+<h2 class="mume-header" id="v-conclusion">V. Conclusion</h2>
+
+<h3 class="mume-header" id="visualisation">Visualisation</h3>
+
+<p>The (summarised) final architecture is the following:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">Layer <span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">)</span>                 Output Shape              Param <span class="token comment">#   </span>
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+input_15 <span class="token punctuation">(</span>InputLayer<span class="token punctuation">)</span>        <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>       <span class="token number">0</span>         
+_________________________________________________________________
+conv1_pad <span class="token punctuation">(</span>ZeroPadding2D<span class="token punctuation">)</span>    <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">226</span><span class="token punctuation">,</span> <span class="token number">226</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>       <span class="token number">0</span>         
+_________________________________________________________________
+conv1 <span class="token punctuation">(</span>Conv2D<span class="token punctuation">)</span>               <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">432</span>       
+_________________________________________________________________
+conv1_bn <span class="token punctuation">(</span>BatchNormalization <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">64</span>        
+_________________________________________________________________
+conv1_relu <span class="token punctuation">(</span>Activation<span class="token punctuation">)</span>      <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">0</span>         
+_________________________________________________________________
+conv_pad_1 <span class="token punctuation">(</span>ZeroPadding2D<span class="token punctuation">)</span>   <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">114</span><span class="token punctuation">,</span> <span class="token number">114</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">0</span>         
+_________________________________________________________________
+conv_dw_1 <span class="token punctuation">(</span>DepthwiseConv2D<span class="token punctuation">)</span>  <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">144</span>       
+_________________________________________________________________
+conv_dw_1_bn <span class="token punctuation">(</span>BatchNormaliza <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">64</span>        
+_________________________________________________________________
+conv_dw_1_relu <span class="token punctuation">(</span>Activation<span class="token punctuation">)</span>  <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>      <span class="token number">0</span>         
+_________________________________________________________________
+conv_pw_1 <span class="token punctuation">(</span>Conv2D<span class="token punctuation">)</span>           <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span>      <span class="token number">512</span>       
+_________________________________________________________________
+conv_pw_1_bn <span class="token punctuation">(</span>BatchNormaliza <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span>      <span class="token number">128</span>       
+_________________________________________________________________
+conv_pw_1_relu <span class="token punctuation">(</span>Activation<span class="token punctuation">)</span>  <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span>      <span class="token number">0</span>         
+_________________________________________________________________
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+_________________________________________________________________
+conv_pad_13 <span class="token punctuation">(</span>ZeroPadding2D<span class="token punctuation">)</span>  <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">0</span>         
+_________________________________________________________________
+conv_dw_13 <span class="token punctuation">(</span>DepthwiseConv2D<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">4608</span>      
+_________________________________________________________________
+conv_dw_13_bn <span class="token punctuation">(</span>BatchNormaliz <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">2048</span>      
+_________________________________________________________________
+conv_dw_13_relu <span class="token punctuation">(</span>Activation<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">0</span>         
+_________________________________________________________________
+conv_pw_13 <span class="token punctuation">(</span>Conv2D<span class="token punctuation">)</span>          <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">262144</span>    
+_________________________________________________________________
+conv_pw_13_bn <span class="token punctuation">(</span>BatchNormaliz <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">2048</span>      
+_________________________________________________________________
+conv_pw_13_relu <span class="token punctuation">(</span>Activation<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>         <span class="token number">0</span>         
+_________________________________________________________________
+global_average_pooling2d_11  <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>               <span class="token number">0</span>         
+_________________________________________________________________
+dense_layer <span class="token punctuation">(</span>Dense<span class="token punctuation">)</span>          <span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>                 <span class="token number">1026</span>      
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+Total params<span class="token punctuation">:</span> <span class="token number">830</span><span class="token punctuation">,</span><span class="token number">562</span>
+Trainable params<span class="token punctuation">:</span> <span class="token number">819</span><span class="token punctuation">,</span><span class="token number">618</span>
+Non<span class="token operator">-</span>trainable params<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span><span class="token number">944</span>
+_________________________________________________________________
+</pre><p>Here are some screenshots of an application of the method implemented in this project. This application can be launched quite easily with the following script and is based on saved trained model so doesn&apos;t require to download the dataset: <code>webcam_cam.py</code> (see also <code>python3 webcam_cam.py --help</code>).</p>
+<p><img src="https://i.imgur.com/RCcHhj8.jpg" alt="Screen Shot 2018-07-22 at 12.17.35"></p>
+<p>The classification and computing time are very good and the live video is fluid. However, the localisation results are limited: groups of people are recognised as one region of interest and close-ups (only a face present on the video) aren&apos;t always recognised properly.</p>
+<h3 class="mume-header" id="reflection">Reflection</h3>
+
+<p>This results should be put into perspective: the authors of the paper used at least tens of thousands of images per class, when the model presented above only uses 855 images in total in the training set. The results are quite satisfying for such a small data set (mainly thanks to data augmentation).</p>
+<p>All in all, we have proved that:</p>
+<ul>
+<li>using a network trained only as a classifier, we can obtain localisation information</li>
+<li>the constraints that the GAP method imposes on the architecture (only one dense layer at the end of the network preceded by a GAP layer) don&apos;t harm the classification results</li>
+</ul>
+<h3 class="mume-header" id="improvement">Improvement</h3>
+
+<p>The 2 principal limitations of the solution presented above are the following:</p>
+<ul>
+<li>The resolution of the localisation is limited by the size of the last activation map.</li>
+<li>The training set used in the project is very small, and it is difficult to find a large, balanced dataset corresponding exactly to the problem.</li>
+</ul>
+<p>Based on these limitations, the possible improvements are the following:</p>
+<ul>
+<li>Using encoder-decoder networks as described in the following paper <a href="https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf">Fully Convolutional Networks for Semantic Segmentation</a></li>
+<li>Using a larger database like the <a href="https://storage.googleapis.com/openimages/web/index.html">Google Open Dataset</a></li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#live-person-detection">Live Person Detection</a>
+<ul>
+<li><a href="#i-definition">I. Definition</a>
+<ul>
+<li><a href="#project-overview">Project Overview</a></li>
+<li><a href="#problem-statement">Problem Statement</a></li>
+<li><a href="#metrics">Metrics</a></li>
+</ul>
+</li>
+<li><a href="#ii-analysis">II. Analysis</a>
+<ul>
+<li><a href="#data-exploration-and-visualisation">Data Exploration and visualisation</a></li>
+<li><a href="#algorithm-and-technique">Algorithm and Technique</a>
+<ul>
+<li><a href="#dense-networks">Dense networks</a></li>
+<li><a href="#convolutional-networks-or-convnet-or-cnn">Convolutional networks (or ConvNet or CNN)</a></li>
+<li><a href="#global-average-pooling-localisation">Global Average Pooling localisation</a></li>
+</ul>
+</li>
+<li><a href="#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li><a href="#iii-methodology">III. Methodology</a>
+<ul>
+<li><a href="#data-preprocessing">Data Preprocessing</a></li>
+<li><a href="#implementation">Implementation</a>
+<ul>
+<li><a href="#development-environment">Development environment</a></li>
+<li><a href="#transfert-learning">Transfert learning</a></li>
+<li><a href="#architecture-and-training-configuration">Architecture and training configuration</a></li>
+</ul>
+</li>
+<li><a href="#generation-of-the-cam-images">Generation of the CAM images</a></li>
+<li><a href="#refinement-and-parameter-tuning">Refinement and parameter tuning</a></li>
+</ul>
+</li>
+<li><a href="#iv-results">IV. Results</a>
+<ul>
+<li><a href="#model-evaluation-and-validation">Model Evaluation and Validation</a></li>
+<li><a href="#justification">Justification</a></li>
+</ul>
+</li>
+<li><a href="#v-conclusion">V. Conclusion</a>
+<ul>
+<li><a href="#visualisation">Visualisation</a></li>
+<li><a href="#reflection">Reflection</a></li>
+<li><a href="#improvement">Improvement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">&#x2261;</a>
+    
+    
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>

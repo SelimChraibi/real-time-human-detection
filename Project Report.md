@@ -1,18 +1,6 @@
-
 # Live Person Detection
 
 ![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
-
-``` sh
-python3 webcam_cam.py --model ./saved_model/mobilenet_with_gi_data.h5
-```
-
->**Requires:**
->Tensorflow version     >= 1.7
-Keras version         >= 2.1
-OpenCV version         >= 3.3
-
-
 
 ## I. Definition
 
