@@ -13,7 +13,7 @@ Its originality comes from the simplicity of both the network it uses and of the
 
 - An explanation of this method and of the specific problem it is applied to in this project can be found in the [`Project Report`](https://selim78.github.io/real-time-human-detection/) page.
 
-[![page](https://selim78.github.io/real-time-human-detection/)
+[![page](https://i.imgur.com/XP6aiLH.png)](https://selim78.github.io/real-time-human-detection/)
 
 - A demonstration of how the code shared in this repo can be used (to create classification models capable of outputting localisation information) can be found in the jupyter notebook [`demo.ipynb`](https://github.com/Selim78/real-time-human-detection/blob/master/demo.ipynb).
 
