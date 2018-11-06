@@ -1,4 +1,4 @@
-# Live Person Detection
+# Real Time Human Detection
 
 ![Screen Shot 2018-07-22 at 12.17.35](https://i.imgur.com/RCcHhj8.jpg)
 
