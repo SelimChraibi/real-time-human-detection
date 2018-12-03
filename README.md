@@ -34,8 +34,8 @@ conda activate ml-environement
 You should be ready to use the `webcam_cam.py` app and the `demo.ipynb` notebook.
 
 > Note: CUDA and cuDNN are required for GPU support and are don’t come with the conda environment mentioned above.
-- [Installing CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
-- [Installing cuDNN](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html)
+>- [Installing CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+>- [Installing cuDNN](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html)
 
 
 ## Application using the trained models
