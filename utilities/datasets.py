@@ -209,9 +209,9 @@ class InriaPersonDataset(AbstractDataset):
     """
     
     def __init__(self, source, validation_split=0.2):
-        source = addSlash(source)
-        self._removeUnusedFolders(source)
-        self._createValidationDataFolder(source, validation_split)
+        self.source = addSlash(source)
+        self._removeUnusedFolders()
+        self._createValidationDataFolder(validation_split)
         super().__init__(source)
         
     def _loadFolder(self, folder):
@@ -252,27 +252,27 @@ class InriaPersonDataset(AbstractDataset):
         tensors = imagePaths2tensor(files)      
         return tensors, targets
         
-    def _removeUnusedFolders(self, source):
+    def _removeUnusedFolders(self):
         """
         Removes the folders that won't be used.
         """
         
-        for folder in os.listdir(source):
+        for folder in os.listdir(self.source):
             if folder != 'Test' and folder != 'Train' and folder != 'Valid':
                 folder = self.source + folder
                 remove(folder)
 
-        for folder in os.listdir(source + 'Train/'):
+        for folder in os.listdir(self.source + 'Train/'):
             if folder != 'neg' and folder != 'pos':
                 folder = self.source + 'Train/' + folder
                 remove(folder)
 
-        for folder in os.listdir(source + 'Test/'):
+        for folder in os.listdir(self.source + 'Test/'):
             if folder != 'neg' and folder != 'pos':
                 folder = self.source + 'Test/' + folder
                 remove(folder)
                     
-    def _createValidationDataFolder(self, source, validation_split=0.2):
+    def _createValidationDataFolder(self, validation_split=0.2):
         """
         If the dataset contains only a `Train` and a `Test` folder,
         this will create a `Valid` folder with a proportion of the the data from `Train` folder.
@@ -287,8 +287,8 @@ class InriaPersonDataset(AbstractDataset):
 
         """
 
-        valid = source + 'Valid/'
-        train = source + 'Train/'
+        valid = self.source + 'Valid/'
+        train = self.source + 'Train/'
 
         if not os.path.exists(valid):
             os.makedirs(valid)
