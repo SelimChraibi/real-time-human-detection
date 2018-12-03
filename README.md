@@ -22,6 +22,22 @@ Its originality comes from the simplicity of both the network it uses and of the
 
 [![ipnb](https://i.imgur.com/mYZfwXl.png)](https://nbviewer.jupyter.org/github/Selim78/real-time-human-detection/blob/master/demo.ipynb)
 
+## Getting started with the code
+
+Create a conda environment from the `yml` file and activate it:
+
+``` bash
+conda env create -f environment.yml
+conda activate ml-environement
+```
+
+You should be ready to use the `webcam_cam.py` app and the `demo.ipynb` notebook.
+
+> Note: CUDA and cuDNN are required for GPU support and are don’t come with the conda environment mentioned above.
+- [Installing CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+- [Installing cuDNN](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html)
+
+
 ## Application using the trained models
 
 Launching the live webcam application:
