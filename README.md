@@ -1,5 +1,5 @@
 
-# Real time human detection - Learning localisation without localisation data
+# Learning localisation without localisation data
 
 <img src="https://media.giphy.com/media/3JU7xOanvSnCBKbUhK/giphy.gif" alt="drawing" width="1000"/>
 
