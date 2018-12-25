@@ -1,6 +1,8 @@
 
 # Learning localisation without localisation data
 
+*Based on Zhou et al, 2015 [Learning Deep Features for Discriminative Localization](https://arxiv.org/abs/1512.04150).*
+
 <img src="https://media.giphy.com/media/3JU7xOanvSnCBKbUhK/giphy.gif" alt="drawing" width="1000"/>
 
 
