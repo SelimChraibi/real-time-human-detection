@@ -16,13 +16,13 @@ This method was introduced in the following paper: [Learning Deep Features for D
 
 Its originality comes from the simplicity of both the network it uses and of the training it requires.
 
-- An explanation of this method and of the specific problem it is applied to in this project can be found in the [`Project Report`](https://selim78.github.io/real-time-human-detection/) page.
+- An explanation of this method and of the specific problem it is applied to in this project can be found in the [`Project Report`](https://SelimChraibi.github.io/real-time-human-detection/) page.
 
-[![page](https://i.imgur.com/XP6aiLH.png)](https://selim78.github.io/real-time-human-detection/)
+[![page](https://i.imgur.com/XP6aiLH.png)](https://SelimChraibi.github.io/real-time-human-detection/)
 
-- A demonstration of how the code shared in this repo can be used (to create classification models capable of outputting localisation information) can be found in the jupyter notebook [`demo.ipynb`](https://nbviewer.jupyter.org/github/Selim78/real-time-human-detection/blob/master/demo.ipynb).
+- A demonstration of how the code shared in this repo can be used (to create classification models capable of outputting localisation information) can be found in the jupyter notebook [`demo.ipynb`](https://nbviewer.jupyter.org/github/SelimChraibi/real-time-human-detection/blob/master/demo.ipynb).
 
-[![ipnb](https://i.imgur.com/mYZfwXl.png)](https://nbviewer.jupyter.org/github/Selim78/real-time-human-detection/blob/master/demo.ipynb)
+[![ipnb](https://i.imgur.com/mYZfwXl.png)](https://nbviewer.jupyter.org/github/SelimChraibi/real-time-human-detection/blob/master/demo.ipynb)
 
 ## Getting started with the code
 
